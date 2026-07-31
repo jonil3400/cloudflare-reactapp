@@ -5,10 +5,10 @@ interface FooterProps {
 export default function Footer({ setActiveTab }: FooterProps) {
 
   return (
-    <footer className="bg-surface-container-lowest w-full py-12 border-t border-outline-variant/10 mt-auto">
+    <footer className="bg-surface-container-lowest w-full py-12 border-t border-outline-variant/10 mt-auto transition-colors duration-300">
       <div className="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto px-6 md:px-8 gap-6">
         <button 
-          onClick={() => setActiveTab('home')}
+          onClick={() => setActiveTab('/')}
           className="font-serif text-xl font-medium tracking-widest text-on-surface hover:text-primary transition-colors cursor-pointer uppercase"
         >
           Jonil Mark

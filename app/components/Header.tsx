@@ -1,21 +1,24 @@
 import { motion } from 'motion/react';
 import { Sun, Moon, FileText } from 'lucide-react';
+import { useEffect } from 'react';
 
 interface HeaderProps {
   activeTab: string;
-  setActiveTab: (tab: string) => void;
+  clickTab: (tab: string) => void;
   openResume: () => void;
   isDark: boolean;
   toggleTheme: () => void;
 }
 
-export default function Header({ activeTab, setActiveTab, openResume, isDark, toggleTheme }: HeaderProps) {
+export default function Header({ activeTab, clickTab, openResume, isDark, toggleTheme }: HeaderProps) {
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'home',path: '', label: 'Home' },
+    { id: 'about',path: 'about', label: 'About' },
+    { id: 'projects',path: 'projects', label: 'Projects' },
+    { id: 'contact',path: 'contact', label: 'Contact' }
   ];
+
+
 
   return (
     <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center pointer-events-none w-full max-w-fit px-4">
@@ -26,7 +29,7 @@ export default function Header({ activeTab, setActiveTab, openResume, isDark, to
         {navItems.map((item) => (
           <button
             key={item.id}
-            onClick={() => setActiveTab(item.id)}
+            onClick={() => clickTab(item.path)}
             className={`relative px-4 py-1.5 font-sans text-xs sm:text-sm font-semibold tracking-wide transition-colors duration-250 cursor-pointer rounded-full ${
               activeTab === item.id
                 ? 'text-primary'
